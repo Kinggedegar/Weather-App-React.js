@@ -3,6 +3,7 @@
  * Wires together all components, handles unit changes and re-fetching
  */
 import { useEffect, useRef } from 'react'
+import { Globe, MapPin } from 'lucide-react'
 import { useWeather } from './hooks/useWeather'
 import { useTheme } from './context/ThemeContext'
 import { getWeatherBackground } from './utils/helpers'
@@ -151,7 +152,9 @@ export default function App() {
 function EmptyState({ onDetect }) {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center animate-fade-in">
-      <div className="text-8xl mb-6 animate-float">🌍</div>
+      <div className="mb-6 animate-float">
+        <Globe size={80} className="text-white" />
+      </div>
       <h2 className="font-display text-3xl font-bold text-white mb-3">
         What's the weather like?
       </h2>
@@ -167,7 +170,7 @@ function EmptyState({ onDetect }) {
           flex items-center gap-2
         "
       >
-        <span>📍</span>
+        <MapPin size={18} />
         Use My Location
       </button>
     </div>

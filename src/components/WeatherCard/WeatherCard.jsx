@@ -2,7 +2,7 @@
  * WeatherCard — displays current weather data with animated icon
  * Shows: temperature, condition, feels-like, humidity, wind, pressure
  */
-import { Heart, Wind, Droplets, Thermometer, Eye, Gauge } from 'lucide-react'
+import { Heart, Wind, Droplets, Thermometer, Eye, Gauge, Sun, Moon } from 'lucide-react'
 import { getIconUrl, } from '../../utils/weatherApi'
 import { titleCase, windDirection, formatTime } from '../../utils/helpers'
 
@@ -29,8 +29,8 @@ export default function WeatherCard({ weather, unitSymbol, speedUnit, isFavorite
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-none">
             {name}
           </h1>
-          <p className="text-white/60 text-sm mt-1 font-body">
-            {country} • {isNight ? '🌙 Night' : '☀️ Day'}
+          <p className="text-white/60 text-sm mt-1 font-body flex items-center gap-1">
+            {country} • {isNight ? <><Moon size={14} className="inline" /> Night</> : <><Sun size={14} className="inline" /> Day</>}
           </p>
         </div>
 

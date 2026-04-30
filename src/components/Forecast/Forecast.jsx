@@ -2,6 +2,7 @@
  * Forecast — horizontal scrollable 5-day forecast strip
  * Each card shows: day, icon, high/low, condition
  */
+import { Droplets } from 'lucide-react'
 import { getIconUrl } from '../../utils/weatherApi'
 import { titleCase } from '../../utils/helpers'
 
@@ -73,7 +74,7 @@ function ForecastCard({ day, unitSymbol, delay, isFirst }) {
       {/* Humidity indicator */}
       {day.humidity > 0 && (
         <div className="mt-2 flex items-center justify-center gap-1">
-          <span className="text-blue-300/70 text-xs">💧</span>
+          <Droplets size={12} className="text-blue-300/70" />
           <span className="text-white/40 text-xs font-mono">{day.humidity}%</span>
         </div>
       )}

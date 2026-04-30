@@ -87,7 +87,7 @@ export function getErrorMessage(code) {
     CITY_NOT_FOUND: "We couldn't find that city. Double-check the spelling and try again.",
     NO_INTERNET: "No internet connection. Please check your network and try again.",
     INVALID_API_KEY: "Invalid API key. Please check your .env configuration.",
-    KEY_NOT_ACTIVATED: "Your API key isn't active yet — OpenWeatherMap takes up to 2 hours to activate new keys. Grab a coffee and try again shortly ☕",
+    KEY_NOT_ACTIVATED: "Your API key isn't active yet — OpenWeatherMap takes up to 2 hours to activate new keys. Please wait a moment and try again.",
     RATE_LIMIT: "Too many requests. Please wait a moment and try again.",
     NO_API_KEY: "API key missing. Copy .env.example to .env and add your OpenWeatherMap key.",
     UNKNOWN_ERROR: "Something went wrong. Please try again.",
