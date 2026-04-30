@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom Properties ─────────────────────────── */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Base ──────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.6s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* ─── Glassmorphism Utilities ───────────────────── */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+.dark .glass-strong {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Shimmer Skeleton ──────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.08) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ─── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+}
+
+/* ─── Dynamic Background Layers ────────────────── */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  transition: background 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Weather-based gradient themes */
+.bg-sunny {
+  background: linear-gradient(135deg, #ffd262 0%, #ff8c42 35%, #e63946 70%, #c1440e 100%);
+}
+.bg-cloudy {
+  background: linear-gradient(135deg, #8fa8c8 0%, #6b7fa3 35%, #4a5568 70%, #2d3748 100%);
+}
+.bg-rainy {
+  background: linear-gradient(135deg, #4a6fa5 0%, #2d5a8e 35%, #1a3a5c 70%, #0d1f33 100%);
+}
+.bg-snowy {
+  background: linear-gradient(135deg, #e8f4f8 0%, #b8d9e8 35%, #7fb3c8 70%, #4a8ba8 100%);
+}
+.bg-night {
+  background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 35%, #24243e 70%, #0f3460 100%);
+}
+.bg-stormy {
+  background: linear-gradient(135deg, #2c2c54 0%, #1a1a2e 35%, #16213e 70%, #0f1117 100%);
+}
+.bg-foggy {
+  background: linear-gradient(135deg, #a0b0c0 0%, #7a8fa0 35%, #5a6f80 70%, #3a4f60 100%);
+}
+.bg-default {
+  background: linear-gradient(135deg, #1a2980 0%, #26d0ce 50%, #0f4c75 100%);
+}
+
+/* Dark mode overlay */
+.dark .bg-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ─── Noise Texture Overlay ─────────────────────── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* ─── Forecast Scroll ───────────────────────────── */
+.forecast-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+
+/* ─── Transitions ───────────────────────────────── */
+.transition-theme {
+  transition: var(--transition-smooth);
+}
